@@ -1,5 +1,5 @@
 {
-  "name": "tky-blog",
+  "name": "effective-garbanzo",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@next/mdx": "^15.3.4",

@@ -18,7 +18,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        pixel: ['"Fusion Pixel"', '"Press Start 2P"', "monospace"],
+        pixel: ['"Fusion Pixel 12px Mono"', "monospace"],
       },
       boxShadow: {
         pixel: "6px 6px 0 #000",

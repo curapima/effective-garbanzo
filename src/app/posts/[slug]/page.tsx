@@ -50,11 +50,11 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <article className="mx-auto max-w-[760px] px-4 py-12 sm:px-6">
-      <Link href="/posts" className="text-sm text-kimi-muted hover:text-kimi-green">
+      <Link href="/posts" className="font-pixel text-sm text-kimi-muted hover:text-kimi-green">
         ← 返回文章列表
       </Link>
       <header className="mt-8 border-b border-kimi-border pb-8">
-        <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em] text-kimi-muted">
+        <div className="flex flex-wrap gap-2 font-pixel text-xs uppercase tracking-[0.18em] text-kimi-muted">
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>
           <span>/</span>
           <Link href={`/categories/${encodeURIComponent(post.category)}`} className="hover:text-kimi-green">
@@ -63,14 +63,14 @@ export default async function PostPage({ params }: PostPageProps) {
           <span>/</span>
           <span>{post.readingMinutes} min</span>
         </div>
-        <h1 className="mt-4 text-4xl font-black leading-tight text-kimi-text sm:text-5xl">{post.title}</h1>
+        <h1 className="mt-4 font-pixel text-4xl font-black leading-tight text-kimi-text sm:text-5xl">{post.title}</h1>
         <p className="mt-5 text-lg leading-8 text-kimi-muted">{post.description}</p>
         <div className="mt-6 flex flex-wrap gap-2">
           {post.tags.map((tag) => (
             <Link
               key={tag}
               href={`/tags/${encodeURIComponent(tag)}`}
-              className="border border-kimi-border bg-kimi-panel px-2 py-1 text-xs text-kimi-muted hover:border-kimi-green hover:text-kimi-green"
+              className="border border-kimi-border bg-kimi-panel px-2 py-1 font-pixel text-xs text-kimi-muted hover:border-kimi-green hover:text-kimi-green"
             >
               #{tag}
             </Link>
@@ -83,16 +83,16 @@ export default async function PostPage({ params }: PostPageProps) {
       <nav className="mt-12 grid gap-4 border-t border-kimi-border pt-8 sm:grid-cols-2" aria-label="文章导航">
         {previous ? (
           <Link href={`/posts/${previous.slug}`} className="border border-kimi-border p-4 hover:border-kimi-green">
-            <span className="text-xs text-kimi-muted">上一篇</span>
-            <p className="mt-2 font-semibold">{previous.title}</p>
+            <span className="font-pixel text-xs text-kimi-muted">上一篇</span>
+            <p className="mt-2 font-pixel font-semibold">{previous.title}</p>
           </Link>
         ) : (
           <span />
         )}
         {next ? (
           <Link href={`/posts/${next.slug}`} className="border border-kimi-border p-4 text-right hover:border-kimi-green">
-            <span className="text-xs text-kimi-muted">下一篇</span>
-            <p className="mt-2 font-semibold">{next.title}</p>
+            <span className="font-pixel text-xs text-kimi-muted">下一篇</span>
+            <p className="mt-2 font-pixel font-semibold">{next.title}</p>
           </Link>
         ) : null}
       </nav>

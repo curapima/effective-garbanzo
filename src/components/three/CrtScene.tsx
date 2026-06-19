@@ -30,12 +30,12 @@ function createScreenTexture({
     context.fillRect(0, y, canvas.width, 2);
   }
 
-  context.font = "700 42px monospace";
+  context.font = '700 42px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#89ffb2";
-  context.fillText("TKY BLOG OS", 72, 120);
-  context.font = "28px monospace";
+  context.fillText("EFFECTIVE-GARBANZO OS", 72, 120);
+  context.font = '28px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#f5f5f0";
-  context.fillText("> BOOTING KIMI TERMINAL", 72, 190);
+  context.fillText("> BOOTING CRT TERMINAL", 72, 190);
   context.fillText("> ROUTES: POSTS / TAGS / ABOUT", 72, 240);
   context.fillText("> DISPLAY: CRT READING MODE", 72, 290);
 
@@ -45,13 +45,13 @@ function createScreenTexture({
   context.strokeRect(382, 360, 260, 150);
   context.strokeRect(692, 360, 260, 150);
 
-  context.font = "700 58px monospace";
+  context.font = '700 58px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#f5f5f0";
   context.fillText(String(postsCount).padStart(2, "0"), 116, 440);
   context.fillText(String(categoriesCount).padStart(2, "0"), 426, 440);
   context.fillText(String(tagsCount).padStart(2, "0"), 736, 440);
 
-  context.font = "22px monospace";
+  context.font = '22px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#a3a3a3";
   context.fillText("POSTS", 116, 480);
   context.fillText("CATS", 426, 480);

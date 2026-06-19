@@ -12,7 +12,7 @@ export function GET() {
     link: siteConfig.url,
     language: "zh-CN",
     favicon: `${siteConfig.url}/favicon.ico`,
-    copyright: `All rights reserved ${new Date().getFullYear()}, TKY`,
+    copyright: `All rights reserved ${new Date().getFullYear()}, effective-garbanzo`,
     feedLinks: {
       rss2: `${siteConfig.url}/rss.xml`,
     },

@@ -32,8 +32,8 @@ export default async function TagPage({ params }: TagPageProps) {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <p className="text-xs uppercase tracking-[0.24em] text-kimi-green">Tag Signal</p>
-      <h1 className="mt-3 text-4xl font-black">#{name}</h1>
+      <p className="font-pixel text-xs uppercase tracking-[0.24em] text-kimi-green">Tag Signal</p>
+      <h1 className="mt-3 font-pixel text-4xl font-black">#{name}</h1>
       <div className="mt-10">
         <PostGrid posts={posts} />
       </div>

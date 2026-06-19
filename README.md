@@ -1,4 +1,4 @@
-# TKY Blog
+# effective-garbanzo
 
 黑白灰像素终端风格的个人博客初始版本，使用 Next.js、TypeScript、Tailwind CSS 和 Three.js 构建。
 
@@ -20,6 +20,12 @@
 - react-markdown + remark-gfm
 - lucide-react
 
+## 字体
+
+- UI 标签、标题、导航和数字使用本地托管的 `Fusion Pixel 12px Monospaced` 像素字体。
+- 正文继续使用系统无衬线字体，避免长文阅读疲劳。
+- 字体文件位于 `public/fonts/fusion-pixel/`，许可证文件保留在同一目录。
+
 ## 本地开发
 
 ```bash
@@ -28,8 +34,6 @@ npm run dev
 ```
 
 默认开发地址：`http://localhost:3000`
-
-如果本机 PATH 中的 Node.js 或 npm 不可用，请先修复本地 Node 环境，或使用可用的 Node 运行时执行 npm 脚本。
 
 ## 常用脚本
 
@@ -108,7 +112,7 @@ npm run build
 NEXT_PUBLIC_SITE_URL=https://your-domain.example
 ```
 
-该变量会用于 metadata、RSS、sitemap 和 robots 中的绝对链接。未配置时默认使用 `https://tky-blog.vercel.app`。
+该变量会用于 metadata、RSS、sitemap 和 robots 中的绝对链接。未配置时默认使用 `https://effective-garbanzo.vercel.app`。
 
 ## 后续计划
 

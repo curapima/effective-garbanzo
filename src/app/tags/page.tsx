@@ -4,7 +4,7 @@ import { getTags } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "标签",
-  description: "浏览 TKY Blog 的全部文章标签。",
+  description: "浏览 effective-garbanzo 的全部文章标签。",
 };
 
 export default function TagsPage() {
@@ -12,8 +12,8 @@ export default function TagsPage() {
 
   return (
     <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <p className="text-xs uppercase tracking-[0.24em] text-kimi-green">Tag Index</p>
-      <h1 className="mt-3 text-4xl font-black">标签</h1>
+      <p className="font-pixel text-xs uppercase tracking-[0.24em] text-kimi-green">Tag Index</p>
+      <h1 className="mt-3 font-pixel text-4xl font-black">标签</h1>
       <div className="mt-10 grid gap-3 sm:grid-cols-2">
         {tags.map((tag) => (
           <LinkPanel

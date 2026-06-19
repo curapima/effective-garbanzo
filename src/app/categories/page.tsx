@@ -4,7 +4,7 @@ import { getCategories } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "分类",
-  description: "浏览 TKY Blog 的文章分类。",
+  description: "浏览 effective-garbanzo 的文章分类。",
 };
 
 export default function CategoriesPage() {
@@ -12,8 +12,8 @@ export default function CategoriesPage() {
 
   return (
     <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <p className="text-xs uppercase tracking-[0.24em] text-kimi-green">Signal Channels</p>
-      <h1 className="mt-3 text-4xl font-black">分类</h1>
+      <p className="font-pixel text-xs uppercase tracking-[0.24em] text-kimi-green">Signal Channels</p>
+      <h1 className="mt-3 font-pixel text-4xl font-black">分类</h1>
       <div className="mt-10 grid gap-3">
         {categories.map((category) => (
           <LinkPanel

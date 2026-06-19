@@ -12,13 +12,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-kimi-border bg-kimi-black/88 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.22em]">
+        <Link href="/" className="flex items-center gap-2 font-pixel text-sm font-bold uppercase tracking-[0.22em]">
           <span className="grid h-9 w-9 place-items-center border border-kimi-border bg-kimi-panel text-kimi-green">
             <Monitor size={18} aria-hidden="true" />
           </span>
-          TKY Blog
+          effective-garbanzo
         </Link>
-        <nav aria-label="主导航" className="flex flex-wrap justify-end gap-2 text-sm text-kimi-muted">
+        <nav aria-label="主导航" className="flex flex-wrap justify-end gap-2 font-pixel text-sm text-kimi-muted">
           {navItems.map((item) => (
             <Link
               key={item.href}
