@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { ScreenFrameShell3D } from "@/components/layout/ScreenFrameShell3D";
 import { TypewriterText } from "@/components/TypewriterText";
 
 type ScreenFrameProps = {
@@ -91,7 +92,13 @@ export function ScreenFrame({
   }, []);
 
   return (
-    <section className="screen-page">
+    <section className={`screen-page screen-page-3d ${isArticle ? "screen-page-article" : ""}`}>
+      <ScreenFrameShell3D
+        isArticle={isArticle}
+        isClicking={isClicking}
+        isRouting={isRouting}
+        isScrolling={isScrolling}
+      />
       <div className={`screen-page-shell ${isArticle ? "article-frame-shell" : ""}`}>
         <div className="screen-page-topbar" aria-hidden="true">
           <span className="font-pixel">CRT / {eyebrow || "TERMINAL"}</span>
