@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LinkPanel } from "@/components/LinkPanel";
+import { ScreenFrame } from "@/components/layout/ScreenFrame";
 import { getTags } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -11,10 +12,8 @@ export default function TagsPage() {
   const tags = getTags();
 
   return (
-    <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <p className="font-pixel text-xs uppercase tracking-[0.24em] text-kimi-green">Tag Index</p>
-      <h1 className="mt-3 font-pixel text-4xl font-black">标签</h1>
-      <div className="mt-10 grid gap-3 sm:grid-cols-2">
+    <ScreenFrame eyebrow="Tag Index" title="标签" description="扫描标签索引，进入对应文章信号。">
+      <div className="grid gap-3 sm:grid-cols-2">
         {tags.map((tag) => (
           <LinkPanel
             key={tag.name}
@@ -24,6 +23,6 @@ export default function TagsPage() {
           />
         ))}
       </div>
-    </section>
+    </ScreenFrame>
   );
 }

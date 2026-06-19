@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Monitor } from "lucide-react";
 
 const navItems = [
@@ -9,6 +12,12 @@ const navItems = [
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
+  if (pathname === "/") {
+    return null;
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-kimi-border bg-kimi-black/88 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">

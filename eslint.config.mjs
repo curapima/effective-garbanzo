@@ -11,6 +11,15 @@ export default [
   },
   js.configs.recommended,
   {
+    files: ["scripts/**/*.{js,mjs}"],
+    languageOptions: {
+      globals: {
+        console: "readonly",
+        process: "readonly",
+      },
+    },
+  },
+  {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       parser: tsParser,

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ScreenFrame } from "@/components/layout/ScreenFrame";
 
 export const metadata: Metadata = {
   title: "关于",
@@ -7,10 +8,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <p className="font-pixel text-xs uppercase tracking-[0.24em] text-kimi-green">Operator Profile</p>
-      <h1 className="mt-3 font-pixel text-4xl font-black">关于</h1>
-      <div className="prose-kimi mt-8">
+    <ScreenFrame eyebrow="Operator Profile" title="关于" maxWidth="narrow">
+      <div className="prose prose-invert prose-neutral max-w-none prose-headings:text-kimi-text prose-a:text-kimi-green">
         <p>
           effective-garbanzo 是一个个人知识终端，用来沉淀技术文章、项目记录、阅读笔记和一些不急着被算法吞掉的长期想法。
         </p>
@@ -20,6 +19,6 @@ export default function AboutPage() {
         </p>
         <p>联系方式与项目链接可以在这里继续补充。</p>
       </div>
-    </section>
+    </ScreenFrame>
   );
 }

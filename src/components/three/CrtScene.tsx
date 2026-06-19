@@ -7,12 +7,56 @@ type CrtSceneProps = {
   postsCount: number;
   categoriesCount: number;
   tagsCount: number;
+  featuredPosts: Array<{
+    title: string;
+    category: string;
+    date: string;
+  }>;
+  categories: Array<{
+    name: string;
+    count: number;
+  }>;
 };
+
+function drawWrappedText(
+  context: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+  maxLines: number,
+) {
+  const characters = Array.from(text);
+  let line = "";
+  let lineIndex = 0;
+
+  for (const character of characters) {
+    const testLine = `${line}${character}`;
+    if (context.measureText(testLine).width > maxWidth && line) {
+      context.fillText(line, x, y + lineIndex * lineHeight);
+      line = character;
+      lineIndex += 1;
+
+      if (lineIndex >= maxLines) {
+        return;
+      }
+    } else {
+      line = testLine;
+    }
+  }
+
+  if (line && lineIndex < maxLines) {
+    context.fillText(line, x, y + lineIndex * lineHeight);
+  }
+}
 
 function createScreenTexture({
   postsCount,
   categoriesCount,
   tagsCount,
+  featuredPosts,
+  categories,
 }: CrtSceneProps): THREE.CanvasTexture {
   const canvas = document.createElement("canvas");
   canvas.width = 1024;
@@ -25,42 +69,91 @@ function createScreenTexture({
 
   context.fillStyle = "#07100a";
   context.fillRect(0, 0, canvas.width, canvas.height);
+  const gradient = context.createRadialGradient(500, 300, 60, 500, 300, 620);
+  gradient.addColorStop(0, "rgba(137, 255, 178, 0.2)");
+  gradient.addColorStop(1, "rgba(5, 5, 5, 0.9)");
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
   context.fillStyle = "rgba(137, 255, 178, 0.08)";
   for (let y = 0; y < canvas.height; y += 8) {
     context.fillRect(0, y, canvas.width, 2);
   }
 
+  for (let index = 0; index < 70; index += 1) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    context.fillStyle = `rgba(245, 245, 240, ${Math.random() * 0.16})`;
+    context.fillRect(x, y, 2, 2);
+  }
+
   context.font = '700 42px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#89ffb2";
-  context.fillText("EFFECTIVE-GARBANZO OS", 72, 120);
+  context.fillText("EFFECTIVE-GARBANZO OS", 64, 86);
   context.font = '28px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#f5f5f0";
-  context.fillText("> BOOTING CRT TERMINAL", 72, 190);
-  context.fillText("> ROUTES: POSTS / TAGS / ABOUT", 72, 240);
-  context.fillText("> DISPLAY: CRT READING MODE", 72, 290);
+  context.fillText("> CHANNEL: BLOG DEVICE FRAME", 64, 138);
+  context.fillText("> ROUTES: POSTS / CATEGORIES / TAGS / ABOUT", 64, 184);
 
   context.strokeStyle = "#89ffb2";
   context.lineWidth = 2;
-  context.strokeRect(72, 360, 260, 150);
-  context.strokeRect(382, 360, 260, 150);
-  context.strokeRect(692, 360, 260, 150);
+  context.strokeRect(64, 228, 260, 128);
+  context.strokeRect(382, 228, 260, 128);
+  context.strokeRect(700, 228, 260, 128);
 
   context.font = '700 58px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#f5f5f0";
-  context.fillText(String(postsCount).padStart(2, "0"), 116, 440);
-  context.fillText(String(categoriesCount).padStart(2, "0"), 426, 440);
-  context.fillText(String(tagsCount).padStart(2, "0"), 736, 440);
+  context.fillText(String(postsCount).padStart(2, "0"), 108, 304);
+  context.fillText(String(categoriesCount).padStart(2, "0"), 426, 304);
+  context.fillText(String(tagsCount).padStart(2, "0"), 744, 304);
 
   context.font = '22px "Fusion Pixel 12px Mono", monospace';
   context.fillStyle = "#a3a3a3";
-  context.fillText("POSTS", 116, 480);
-  context.fillText("CATS", 426, 480);
-  context.fillText("TAGS", 736, 480);
+  context.fillText("POSTS", 108, 334);
+  context.fillText("CATS", 426, 334);
+  context.fillText("TAGS", 744, 334);
+
+  context.strokeStyle = "rgba(137, 255, 178, 0.72)";
+  context.strokeRect(64, 404, 576, 224);
+  context.strokeRect(684, 404, 276, 224);
+
+  context.font = '700 25px "Fusion Pixel 12px Mono", monospace';
+  context.fillStyle = "#89ffb2";
+  context.fillText("LATEST_POSTS", 88, 446);
+  context.fillText("CHANNELS", 708, 446);
+
+  context.font = '22px "Fusion Pixel 12px Mono", monospace';
+  featuredPosts.slice(0, 3).forEach((post, index) => {
+    const y = 494 + index * 46;
+    context.fillStyle = "#a3a3a3";
+    context.fillText(`0${index + 1}`, 88, y);
+    context.fillStyle = "#f5f5f0";
+    drawWrappedText(context, post.title, 136, y, 382, 24, 1);
+    context.fillStyle = "#89ffb2";
+    context.fillText(post.category.toUpperCase(), 520, y);
+  });
+
+  context.font = '21px "Fusion Pixel 12px Mono", monospace';
+  categories.slice(0, 4).forEach((category, index) => {
+    context.fillStyle = index === 0 ? "#f5f5f0" : "#a3a3a3";
+    context.fillText(`> ${category.name} [${category.count}]`, 708, 492 + index * 36);
+  });
 
   context.fillStyle = "#89ffb2";
-  context.fillRect(72, 610, 18, 32);
+  context.fillRect(64, 684, 18, 32);
   context.fillStyle = "#f5f5f0";
-  context.fillText("READY FOR READING_", 104, 636);
+  context.fillText("READY FOR READING_", 96, 710);
+
+  context.strokeStyle = "rgba(255, 70, 70, 0.28)";
+  context.beginPath();
+  context.moveTo(58, 146);
+  context.lineTo(962, 144);
+  context.stroke();
+  context.strokeStyle = "rgba(70, 120, 255, 0.24)";
+  context.beginPath();
+  context.moveTo(58, 150);
+  context.lineTo(962, 148);
+  context.stroke();
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
@@ -138,6 +231,21 @@ export function CrtScene(props: CrtSceneProps) {
     screen.position.set(-0.32, 0.68, 1.35);
     group.add(screen);
 
+    const glass = new THREE.Mesh(
+      new THREE.PlaneGeometry(3.82, 2.32, 20, 12),
+      new THREE.MeshPhysicalMaterial({
+        color: "#dfffea",
+        transparent: true,
+        opacity: 0.13,
+        roughness: 0.08,
+        metalness: 0,
+        clearcoat: 1,
+        clearcoatRoughness: 0.15,
+      }),
+    );
+    glass.position.set(-0.32, 0.68, 1.39);
+    group.add(glass);
+
     const sidePanel = new THREE.Mesh(new THREE.BoxGeometry(0.72, 2.62, 0.26), darkMaterial);
     sidePanel.position.set(2.16, 0.68, 1.36);
     group.add(sidePanel);
@@ -154,6 +262,24 @@ export function CrtScene(props: CrtSceneProps) {
       button.position.set(2.16, -0.35 - index * 0.25, 1.56);
       group.add(button);
     }
+
+    for (let index = 0; index < 8; index += 1) {
+      const vent = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.035, 0.035), darkMaterial);
+      vent.position.set(-2.18 + index * 0.16, -0.92, 1.55);
+      group.add(vent);
+    }
+
+    const cartridgeSlot = new THREE.Mesh(new THREE.BoxGeometry(1.28, 0.11, 0.08), darkMaterial);
+    cartridgeSlot.position.set(0.9, -1.13, 1.56);
+    group.add(cartridgeSlot);
+
+    const sticker = new THREE.Mesh(
+      new THREE.PlaneGeometry(0.82, 0.28),
+      new THREE.MeshBasicMaterial({ color: "#f0e4bf" }),
+    );
+    sticker.position.set(-1.72, -1.1, 1.565);
+    sticker.rotation.z = -0.08;
+    group.add(sticker);
 
     const base = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.28, 1.8), bodyMaterial);
     base.position.set(0, -1.74, -0.2);

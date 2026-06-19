@@ -77,7 +77,7 @@ export default async function PostPage({ params }: PostPageProps) {
           ))}
         </div>
       </header>
-      <div className="prose-kimi mt-8">
+      <div className="prose prose-invert prose-neutral mt-8 max-w-none prose-headings:text-kimi-text prose-a:text-kimi-green prose-blockquote:border-l-kimi-green prose-blockquote:bg-kimi-panel/70 prose-blockquote:px-4 prose-blockquote:py-2 prose-code:text-kimi-amber prose-pre:border prose-pre:border-kimi-border prose-pre:bg-kimi-black prose-th:text-kimi-green">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
       <nav className="mt-12 grid gap-4 border-t border-kimi-border pt-8 sm:grid-cols-2" aria-label="文章导航">

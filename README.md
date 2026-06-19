@@ -51,7 +51,7 @@ npm run start
 content/posts/
 ```
 
-每篇文章使用 Markdown/MDX，并包含 frontmatter：
+每篇文章使用 Markdown/MDX，并包含 frontmatter。博客所有者可以直接把 `.md` 文件上传或复制到 `content/posts/`：
 
 ```yaml
 ---
@@ -73,6 +73,14 @@ draft: false
 - `draft: true` 的文章在生产环境默认不展示。
 - 阅读时间会根据正文自动计算。
 - 分类和标签页面会根据文章 frontmatter 自动聚合。
+
+快速创建 Markdown 草稿：
+
+```bash
+npm run new:post -- "文章标题" --category=技术 --tags=Next.js,博客
+```
+
+更完整的上传说明见 `content/README.md`。
 
 ## 主要目录
 
