@@ -293,11 +293,11 @@ a {
 
 .screen-page {
   position: relative;
-  display: grid;
+  display: block;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  padding: clamp(0.75rem, 1.8vw, 1.35rem);
+  padding: 0;
 }
 
 .screen-frame-shell-3d {
@@ -305,34 +305,34 @@ a {
   position: absolute;
   inset: 0;
   z-index: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .screen-page-shell {
-  position: relative;
+  position: absolute;
+  left: calc(50% - clamp(2rem, 6vw, 5.5rem));
+  top: 50%;
   z-index: 1;
   display: flex;
-  width: min(1180px, 100%);
+  width: clamp(18rem, 72vw, calc(100vw - 9rem));
+  height: clamp(16rem, 72vh, calc(100vh - 7rem));
   min-height: 0;
   flex-direction: column;
-  justify-self: center;
   border: 0;
   border-radius: 0;
   background: transparent;
-  padding:
-    clamp(2.65rem, 5.4vw, 4.25rem)
-    clamp(4.35rem, 7.2vw, 5.55rem)
-    clamp(4.55rem, 6.8vw, 5.75rem);
+  padding: 0;
   box-shadow: none;
+  transform: translate(-50%, -50%);
 }
 
 .screen-page-topbar {
   pointer-events: none;
   position: absolute;
-  top: clamp(1rem, 2.5vw, 1.8rem);
-  left: clamp(4.6rem, 7.5vw, 5.8rem);
-  right: clamp(4.6rem, 7.5vw, 5.8rem);
+  top: clamp(-2.85rem, -4.8vh, -1.65rem);
+  left: clamp(0.35rem, 1vw, 0.9rem);
+  right: clamp(0.35rem, 1vw, 0.9rem);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -361,7 +361,7 @@ a {
   flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.82);
-  border-radius: 18px;
+  border-radius: clamp(14px, 2vw, 28px);
   background: var(--color-bg-screen);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.7),
@@ -388,14 +388,14 @@ a {
   min-height: 0;
   flex: 1 1 auto;
   overflow-y: auto;
-  padding: clamp(1.25rem, 3vw, 2.25rem);
+  padding: clamp(1rem, 2.8vw, 2.75rem);
 }
 
 .screen-page-controls {
   pointer-events: none;
   position: absolute;
-  right: clamp(5.2rem, 8.4vw, 6.3rem);
-  bottom: clamp(2.05rem, 3.5vw, 2.8rem);
+  right: clamp(-9.2rem, -10vw, -4.9rem);
+  bottom: clamp(1.4rem, 8vh, 4.4rem);
   z-index: 2;
   display: flex;
   justify-content: flex-end;
@@ -563,9 +563,12 @@ a {
   }
 
   .screen-page-shell {
+    left: calc(50% - 7vw);
+    width: min(76vw, calc(100vw - 4.75rem));
+    height: min(70vh, calc(100vh - 6rem));
     min-height: 0;
-    border-radius: 12px;
-    padding: 0.75rem;
+    border-radius: 0;
+    padding: 0;
     box-shadow: 0 0 28px rgba(0, 0, 0, 0.02);
   }
 
