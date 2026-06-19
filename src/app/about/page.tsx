@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <ScreenFrame eyebrow="Operator Profile" title="关于" maxWidth="narrow">
-      <div className="prose prose-invert prose-neutral max-w-none prose-headings:text-kimi-text prose-a:text-kimi-green">
+      <div className="prose prose-neutral text-kimi-text max-w-none prose-headings:text-kimi-text prose-a:text-kimi-green">
         <p>
           effective-garbanzo 是一个个人知识终端，用来沉淀技术文章、项目记录、阅读笔记和一些不急着被算法吞掉的长期想法。
         </p>

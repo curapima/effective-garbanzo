@@ -23,6 +23,11 @@ export type Post = PostFrontmatter & {
   readingMinutes: number;
 };
 
+type RawPostFrontmatter = Omit<PostFrontmatter, "date" | "updated"> & {
+  date: string | Date;
+  updated?: string | Date;
+};
+
 export function createPostSlug(filePath: string): string {
   const normalizedPath = filePath.replaceAll("\\", "/");
   const fileName = path.posix.basename(normalizedPath);
@@ -34,14 +39,28 @@ function isPostFile(fileName: string): boolean {
   return postFileExtensionPattern.test(fileName);
 }
 
+function normalizeFrontmatterDate(date: string | Date | undefined): string | undefined {
+  if (!date) {
+    return undefined;
+  }
+
+  if (date instanceof Date) {
+    return date.toISOString().slice(0, 10);
+  }
+
+  return date;
+}
+
 function toPost(fileName: string): Post {
   const fullPath = path.join(postsDirectory, fileName);
   const source = fs.readFileSync(fullPath, "utf8");
   const { content, data } = matter(source);
-  const frontmatter = data as PostFrontmatter;
+  const frontmatter = data as RawPostFrontmatter;
 
   return {
     ...frontmatter,
+    date: normalizeFrontmatterDate(frontmatter.date) ?? "",
+    updated: normalizeFrontmatterDate(frontmatter.updated),
     slug: createPostSlug(fileName),
     content,
     readingMinutes: Math.ceil(readingTime(content).minutes),

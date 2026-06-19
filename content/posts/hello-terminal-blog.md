@@ -1,5 +1,6 @@
 ---
 title: "启动终端博客"
+slug: "hello-terminal-blog"
 description: "记录这个博客初始版本的设计目标、视觉语言和内容方向。"
 date: "2026-06-19"
 updated: "2026-06-19"

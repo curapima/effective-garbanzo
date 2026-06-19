@@ -5,14 +5,14 @@
 ## 快速创建
 
 ```bash
-npm run new:post -- "文章标题" --category=技术 --tags=Next.js,博客
+pnpm new:post -- "文章标题" --category=技术 --tags=Next.js,博客
 ```
 
 脚本会在 `content/posts/` 下生成一个 `.md` 草稿文件。确认内容后，把 frontmatter 里的 `draft` 改成 `false` 即可发布。
 
 ## 手动上传
 
-新建或上传一个 Markdown 文件，例如：
+新建立或上传一个 Markdown 文件，例如：
 
 ```text
 content/posts/my-new-post.md
@@ -47,6 +47,6 @@ draft: false
 ## 发布检查
 
 ```bash
-npm run lint
-npm run build
+pnpm lint
+pnpm build
 ```

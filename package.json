@@ -8,9 +8,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "new:post": "node scripts/new-post.mjs"
+    "new:post": "node scripts/new-post.mjs",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@keystatic/core": "^0.5.50",
+    "@keystatic/next": "^5.0.4",
     "@next/mdx": "^15.3.4",
     "feed": "^5.1.0",
     "gray-matter": "^4.0.3",
@@ -20,15 +23,13 @@
     "react-dom": "^19.1.0",
     "react-markdown": "^10.1.0",
     "reading-time": "^1.5.0",
-    "remark-gfm": "^4.0.1",
-    "three": "^0.177.0"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@types/three": "^0.177.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.29.0",
     "eslint-config-next": "^15.3.4",

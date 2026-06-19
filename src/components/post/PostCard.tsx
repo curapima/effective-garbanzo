@@ -12,7 +12,7 @@ export function PostCard({ post }: { post: Post }) {
         <span>/</span>
         <span>{post.readingMinutes} min</span>
       </div>
-      <h2 className="font-pixel text-xl font-semibold text-kimi-text">
+      <h2 className="text-xl font-semibold text-kimi-text">
         <Link href={`/posts/${post.slug}`} className="flex items-start justify-between gap-3">
           <span>{post.title}</span>
           <ArrowUpRight className="mt-1 shrink-0 text-kimi-dim transition group-hover:text-kimi-green" size={18} />

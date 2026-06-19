@@ -1,5 +1,6 @@
 ---
 title: "Three.js 老式显示屏路线图"
+slug: "three-screen-roadmap"
 description: "拆解首页 3D 场景的最小可行实现方式。"
 date: "2026-06-17"
 updated: "2026-06-17"

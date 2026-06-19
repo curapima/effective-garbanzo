@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 
+// REBUILD TRIGGER: Force Tailwind theme reload configuration
 const config: Config = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,md,mdx}",
@@ -10,23 +11,23 @@ const config: Config = {
     extend: {
       colors: {
         kimi: {
-          black: "#050505",
-          panel: "#101010",
-          raised: "#181818",
-          border: "#3a3a3a",
-          text: "#f5f5f0",
-          muted: "#a3a3a3",
-          dim: "#696969",
-          green: "#89ffb2",
-          amber: "#f0e4bf",
+          black: "var(--color-bg-base)",
+          panel: "var(--color-bg-panel)",
+          raised: "var(--color-bg-raised)",
+          border: "var(--color-border)",
+          text: "var(--color-text-main)",
+          muted: "var(--color-text-muted)",
+          dim: "var(--color-text-dim)",
+          green: "var(--color-primary)",
+          amber: "var(--color-code-text)",
         },
       },
       fontFamily: {
         pixel: ['"Fusion Pixel 12px Mono"', "monospace"],
       },
       boxShadow: {
-        pixel: "6px 6px 0 #000",
-        glow: "0 0 36px rgba(137, 255, 178, 0.16)",
+        pixel: "6px 6px 0 var(--color-text-main)",
+        glow: "0 0 36px var(--color-primary-glow)",
       },
     },
   },

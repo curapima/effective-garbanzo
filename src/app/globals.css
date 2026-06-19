@@ -17,28 +17,72 @@
 }
 
 :root {
-  color-scheme: dark;
-  background: #050505;
-  color: #f5f5f0;
+  color-scheme: light !important;
+  --color-bg-base: #f5f5f7;         /* Light grey page base background */
+  --color-bg-screen: #ffffff;       /* Pure white screen viewport background */
+  --color-bg-panel: #ffffff;        /* Pure white cards and headers background */
+  --color-bg-raised: #eaeaea;       /* Slightly darker grey for hovered elements */
+  --color-border: #000000;          /* Stark black borders for retro CRT bezel */
+  --color-text-main: #000000;       /* Pure black for high-contrast titles */
+  --color-text-muted: #3a3a3c;      /* Dark charcoal grey for secondary text hierarchy */
+  --color-text-dim: #5c5c5e;        /* Medium grey for tertiary metadata (timestamps, read time) */
+  --color-primary: #000000;         /* Primary brand color: black (no green) */
+  --color-primary-glow: rgba(0, 0, 0, 0.03);
+  --color-primary-led-glow: rgba(0, 0, 0, 0.25); /* LED glow color */
+  
+  /* Code block colors */
+  --color-code-bg: #f5f5f7;         /* Inline code & code block container background */
+  --color-code-text: #000000;       /* Code text: pure black */
+  --color-code-border: #cccccc;     /* Code border: subtle grey */
+  
+  /* Decorative & Bezel overlays */
+  --color-scanline: transparent;
+  --color-glass-specular: transparent;
+  --color-screen-glow: transparent;
+  --color-screen-shadow: rgba(0, 0, 0, 0.05);
+  --color-bezel-detail: #e5e5ea;
+  --color-shadow-glow: transparent;
+
+  --section-height: 100vh;          /* Fallback for pages outside scroll layout */
+  
+  /* Fluid paddings relative to container height */
+  --panel-top-padding: calc(var(--section-height) * 0.07);
+  --panel-padding-y: calc(var(--section-height) * 0.05);
+  --panel-padding-x: clamp(1.25rem, 3vw, 2.25rem);
+  
+  /* Fluid component heights relative to container height */
+  --height-metrics-panel: calc(var(--section-height) * 0.16);
+  --height-terminal-panel: calc(var(--section-height) * 0.25);
+  --height-post-channel: calc(var(--section-height) * 0.32);
+  
+  /* Fluid spacings */
+  --space-hero-mt: calc(var(--section-height) * 0.025);
+  --space-hero-mb: calc(var(--section-height) * 0.025);
 }
 
 * {
   box-sizing: border-box;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light !important;
+  forced-color-adjust: none !important;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    radial-gradient(circle at top, rgba(137, 255, 178, 0.08), transparent 36rem),
-    #050505;
-  background-size: 28px 28px, 28px 28px, auto, auto;
+  color: var(--color-text-main);
+  color-scheme: light !important;
+  forced-color-adjust: none !important;
+  background: var(--color-bg-base);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -48,28 +92,13 @@ a {
 }
 
 ::selection {
-  background: #89ffb2;
-  color: #050505;
+  background: var(--color-primary);
+  color: var(--color-bg-base);
 }
 
 .crt-scanline {
   position: relative;
   overflow: hidden;
-}
-
-.crt-scanline::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.04) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  mix-blend-mode: screen;
 }
 
 .home-crt-stage {
@@ -84,17 +113,17 @@ a {
 .crt-home-device {
   position: relative;
   width: min(1180px, 100%);
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--color-border);
   border-radius: 18px 18px 30px 30px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 14%),
-    linear-gradient(135deg, rgba(245, 245, 240, 0.08), transparent 24%),
-    linear-gradient(315deg, rgba(137, 255, 178, 0.08), transparent 28%),
-    #101010;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent 14%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.02), transparent 24%),
+    linear-gradient(315deg, rgba(0, 102, 34, 0.02), transparent 28%),
+    var(--color-bg-panel);
   padding: clamp(1rem, 2vw, 1.6rem);
   box-shadow:
-    0 0 58px rgba(137, 255, 178, 0.14),
-    14px 14px 0 #000;
+    0 0 58px var(--color-shadow-glow),
+    14px 14px 0 var(--color-text-main);
 }
 
 .crt-home-device::before,
@@ -107,9 +136,9 @@ a {
 .crt-home-device::before {
   inset: 1.1rem;
   z-index: 2;
-  border: 1px solid rgba(245, 245, 240, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 42% / 5%;
-  box-shadow: inset 0 0 44px rgba(245, 245, 240, 0.12);
+  box-shadow: inset 0 0 44px rgba(0, 0, 0, 0.04);
 }
 
 .crt-home-device::after {
@@ -118,8 +147,8 @@ a {
   width: 9rem;
   height: 0.45rem;
   border-radius: 999px;
-  background: #070707;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: var(--color-bezel-detail);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .crt-home-topbar {
@@ -128,7 +157,7 @@ a {
   justify-content: space-between;
   gap: 1rem;
   padding: 0 0.45rem 0.75rem;
-  color: #a3a3a3;
+  color: var(--color-text-dim);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
 }
@@ -137,8 +166,9 @@ a {
   width: 0.68rem;
   height: 0.68rem;
   border-radius: 999px;
-  background: #89ffb2;
-  box-shadow: 0 0 16px rgba(137, 255, 178, 0.8);
+  background: var(--color-primary);
+  box-shadow: 0 0 16px var(--color-primary-led-glow);
+  animation: led-breathe 3.5s ease-in-out infinite;
 }
 
 .crt-home-screen {
@@ -146,28 +176,13 @@ a {
   height: min(76vh, 760px);
   min-height: 560px;
   overflow: hidden;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--color-border);
   border-radius: 18px;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(137, 255, 178, 0.12), transparent 26rem),
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    #050505;
-  background-size: auto, 100% 1.6rem, auto;
-  box-shadow:
-    inset 0 0 48px rgba(137, 255, 178, 0.08),
-    inset 0 0 120px rgba(0, 0, 0, 0.72);
+  background: var(--color-bg-screen);
 }
 
 .crt-home-glass {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background:
-    linear-gradient(90deg, rgba(255, 70, 70, 0.08), transparent 18%, transparent 82%, rgba(70, 120, 255, 0.08)),
-    radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.35)),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 22%);
-  mix-blend-mode: screen;
+  display: none !important;
 }
 
 .crt-home-content {
@@ -176,20 +191,6 @@ a {
   height: 100%;
   overflow-y: auto;
   padding: clamp(1.25rem, 3vw, 2.4rem);
-  scrollbar-color: #89ffb2 #101010;
-  scrollbar-width: thin;
-}
-
-.crt-home-content::-webkit-scrollbar {
-  width: 10px;
-}
-
-.crt-home-content::-webkit-scrollbar-track {
-  background: #101010;
-}
-
-.crt-home-content::-webkit-scrollbar-thumb {
-  background: #89ffb2;
 }
 
 .crt-home-nav {
@@ -202,10 +203,9 @@ a {
 }
 
 .crt-home-nav a {
-  border: 1px solid #3a3a3a;
-  background: rgba(16, 16, 16, 0.78);
-  padding: 0.55rem 0.75rem;
-  color: #a3a3a3;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--color-text-dim);
   transition:
     border-color 160ms ease,
     color 160ms ease,
@@ -213,9 +213,9 @@ a {
 }
 
 .crt-home-nav a:hover {
-  border-color: #89ffb2;
-  color: #89ffb2;
-  background: #101010;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-bg-panel);
 }
 
 .crt-home-hero {
@@ -232,16 +232,16 @@ a {
 
 .crt-home-section {
   padding: clamp(2rem, 6vw, 4rem) 0;
-  border-top: 1px solid #3a3a3a;
+  border-top: 1px solid var(--color-border);
 }
 
 .crt-post-channel {
   display: block;
-  min-height: 16rem;
-  border: 1px solid #3a3a3a;
+  min-height: var(--height-post-channel);
+  border: 1px solid var(--color-border);
   background:
-    linear-gradient(135deg, rgba(137, 255, 178, 0.08), transparent 30%),
-    #101010;
+    linear-gradient(135deg, rgba(0, 0, 0, 0.01), transparent 30%),
+    var(--color-bg-panel);
   padding: 1rem;
   transition:
     border-color 160ms ease,
@@ -249,7 +249,7 @@ a {
 }
 
 .crt-post-channel:hover {
-  border-color: #89ffb2;
+  border-color: var(--color-primary);
   transform: translateY(-0.18rem);
 }
 
@@ -263,37 +263,67 @@ a {
 .crt-home-controls span {
   width: 1.35rem;
   height: 1.35rem;
-  border: 1px solid #3a3a3a;
+  border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 999px;
-  background:
-    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.14), transparent 28%),
-    #070707;
+  background: #ffffff;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Light 1: Power/Ready (Breathing Black) */
+.crt-home-controls span:nth-child(1) {
+  background: var(--color-primary);
+  box-shadow: 0 0 4px var(--color-primary-led-glow);
+  animation: led-breathe 2.8s ease-in-out infinite;
+}
+
+/* Light 2: Activity/Link (Rapid flickering Black) */
+.crt-home-controls span:nth-child(2) {
+  background: #000000;
+  box-shadow: none;
+  animation: led-fast-flicker 0.12s infinite;
+}
+
+/* Light 3: Mode/Status (Blinking Black) */
+.crt-home-controls span:nth-child(3) {
+  background: #000000;
+  box-shadow: none;
+  animation: led-slow-blink 2s steps(2) infinite;
 }
 
 .screen-page {
   position: relative;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: clamp(0.75rem, 1.8vw, 1.35rem);
 }
 
 .screen-page-shell {
-  border: 1px solid #3a3a3a;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
   border-radius: 16px 16px 28px 28px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 14%),
-    linear-gradient(135deg, rgba(137, 255, 178, 0.06), transparent 28%),
-    #101010;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent 14%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.01), transparent 28%),
+    var(--color-bg-panel);
   padding: clamp(0.85rem, 1.8vw, 1.35rem);
   box-shadow:
-    0 0 38px rgba(137, 255, 178, 0.12),
-    10px 10px 0 #000;
+    0 0 38px var(--color-shadow-glow),
+    10px 10px 0 var(--color-text-main);
 }
 
 .screen-page-topbar {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding: 0 0.35rem 0.7rem;
-  color: #a3a3a3;
+  color: var(--color-text-dim);
   font-size: 0.7rem;
   letter-spacing: 0.16em;
 }
@@ -302,44 +332,38 @@ a {
   width: 0.62rem;
   height: 0.62rem;
   border-radius: 999px;
-  background: #89ffb2;
-  box-shadow: 0 0 14px rgba(137, 255, 178, 0.78);
+  background: var(--color-primary);
+  box-shadow: 0 0 14px var(--color-primary-led-glow);
+  animation: led-breathe 3.5s ease-in-out infinite;
 }
 
 .screen-page-display {
   position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
   overflow: hidden;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--color-border);
   border-radius: 14px;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(137, 255, 178, 0.1), transparent 25rem),
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    #050505;
-  background-size: auto, 100% 1.65rem, auto;
-  box-shadow:
-    inset 0 0 42px rgba(137, 255, 178, 0.08),
-    inset 0 0 110px rgba(0, 0, 0, 0.7);
+  background: var(--color-bg-screen);
 }
 
 .screen-page-glass {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(90deg, rgba(255, 70, 70, 0.06), transparent 18%, transparent 82%, rgba(70, 120, 255, 0.06)),
-    radial-gradient(ellipse at center, transparent 62%, rgba(0, 0, 0, 0.32)),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 22%);
-  mix-blend-mode: screen;
+  display: none !important;
 }
 
 .screen-page-content {
   position: relative;
   z-index: 1;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
   padding: clamp(1.25rem, 3vw, 2.25rem);
 }
 
 .screen-page-controls {
+  flex: 0 0 auto;
   display: flex;
   justify-content: flex-end;
   gap: 0.55rem;
@@ -349,11 +373,33 @@ a {
 .screen-page-controls span {
   width: 1.12rem;
   height: 1.12rem;
-  border: 1px solid #3a3a3a;
+  border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 999px;
-  background:
-    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.14), transparent 28%),
-    #070707;
+  background: #ffffff; /* white off-state */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  opacity: 0.65;
+}
+
+/* Light 1: Scroll Sync Indicator (Glows Black on Scroll) */
+.screen-page-controls span:nth-child(1).led-scroll-active {
+  background: #000000;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+/* Light 2: Click Input Activity Indicator (Flickers Black on Click) */
+.screen-page-controls span:nth-child(2).led-click-active {
+  background: #000000;
+  opacity: 1;
+  animation: led-fast-flicker 0.12s infinite;
+}
+
+/* Light 3: Channel Route Loading Indicator (Blinks Black on Route Change) */
+.screen-page-controls span:nth-child(3).led-route-active {
+  background: #000000;
+  opacity: 1;
+  animation: led-slow-blink 0.3s steps(2) infinite;
 }
 
 .crt-noise {
@@ -362,9 +408,9 @@ a {
   inset: 0;
   opacity: 0.24;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(137, 255, 178, 0.12), transparent 16rem),
-    radial-gradient(circle at 78% 16%, rgba(245, 245, 240, 0.08), transparent 12rem),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 4px);
+    radial-gradient(circle at 20% 20%, rgba(0, 102, 34, 0.02), transparent 16rem),
+    radial-gradient(circle at 78% 16%, rgba(0, 0, 0, 0.03), transparent 12rem),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.015), rgba(0, 0, 0, 0.015) 1px, transparent 1px, transparent 4px);
 }
 
 .glitch-label {
@@ -376,14 +422,14 @@ a {
 
 .terminal-panel {
   display: flex;
-  min-height: 12rem;
+  min-height: var(--height-terminal-panel);
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--color-border);
   background:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    #101010;
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    var(--color-bg-panel);
   background-size: 100% 1.6rem;
   padding: 1.25rem;
   transition:
@@ -393,7 +439,30 @@ a {
 }
 
 .terminal-panel:hover {
-  border-color: #89ffb2;
+  border-color: var(--color-primary);
+  transform: translateY(-0.18rem);
+}
+
+.metrics-panel {
+  display: flex;
+  min-height: var(--height-metrics-panel);
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    var(--color-bg-panel);
+  background-size: 100% 1.6rem;
+  padding: calc(var(--height-metrics-panel) * 0.1) var(--panel-padding-x);
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    color 160ms ease;
+}
+
+.metrics-panel:hover {
+  border-color: var(--color-primary);
   transform: translateY(-0.18rem);
 }
 
@@ -442,7 +511,7 @@ a {
   .crt-home-device {
     border-radius: 12px;
     padding: 0.75rem;
-    box-shadow: 0 0 28px rgba(137, 255, 178, 0.14);
+    box-shadow: 0 0 28px rgba(0, 0, 0, 0.03);
   }
 
   .crt-home-screen {
@@ -460,12 +529,200 @@ a {
   }
 
   .screen-page-shell {
+    min-height: 0;
     border-radius: 12px;
     padding: 0.75rem;
-    box-shadow: 0 0 28px rgba(137, 255, 178, 0.12);
+    box-shadow: 0 0 28px rgba(0, 0, 0, 0.02);
   }
 
   .screen-page-content {
     padding: 1rem;
   }
 }
+
+/* REBUILD TRIGGER: Markdown inline code and block styling overrides */
+.prose code {
+  color: var(--color-code-text) !important;
+  background: var(--color-code-bg) !important;
+  padding: 0.15em 0.3em !important;
+  border-radius: 4px !important;
+  font-family: "Fusion Pixel 12px Mono", monospace;
+  font-size: 0.9em !important;
+}
+
+.prose pre {
+  background: var(--color-code-bg) !important;
+  border: 1px solid var(--color-code-border) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+}
+
+.prose pre code {
+  color: var(--color-code-text) !important;
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 0.95em !important;
+}
+
+@media (max-width: 768px) {
+  .article-frame-shell {
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  
+  .article-frame-shell .screen-page-topbar,
+  .article-frame-shell .screen-page-controls {
+    display: none !important;
+  }
+  
+  .article-frame-shell .screen-page-display {
+    border: none !important;
+    border-radius: 0 !important;
+    background: var(--color-bg-base) !important;
+    box-shadow: none !important;
+  }
+}
+
+.screen-page:has(.home-section-panel) .screen-page-content {
+  padding: 0 !important;
+}
+
+.home-section-panel {
+  width: 100%;
+  height: var(--section-height);
+  flex-shrink: 0;
+  overflow-y: hidden; /* Disable internal scroll on desktop to avoid scroll conflicts */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-sizing: border-box;
+  padding: var(--panel-top-padding) var(--panel-padding-x) var(--panel-padding-y);
+}
+
+.home-section-panel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fluid spacings inside home sections */
+.home-section-panel header {
+  margin-bottom: var(--space-hero-mb) !important;
+}
+.home-section-panel header h1 {
+  margin-top: calc(var(--space-hero-mt) * 0.5) !important;
+}
+.home-section-panel header p {
+  margin-top: var(--space-hero-mt) !important;
+}
+.home-section-panel header .flex {
+  margin-top: calc(var(--space-hero-mt) * 1.2) !important;
+}
+.home-section-panel .crt-home-metrics {
+  margin-top: var(--space-hero-mt) !important;
+}
+
+/* Keep scrolling enabled on mobile viewports */
+@media (max-width: 768px) {
+  .home-section-panel {
+    height: auto !important;
+    overflow-y: auto !important;
+    padding: 2.5rem 1.25rem 1.25rem !important;
+  }
+  .home-section-panel header,
+  .home-section-panel header h1,
+  .home-section-panel header p,
+  .home-section-panel header .flex,
+  .home-section-panel .crt-home-metrics {
+    margin-top: revert !important;
+    margin-bottom: revert !important;
+  }
+}
+/* CRT Power-On Beam Animation */
+.crt-power-on {
+  animation: crt-power-on-anim 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide content during the scale-up sequence to prevent visual layout squishing */
+.crt-power-on .screen-page-content,
+.crt-power-on header,
+.crt-power-on footer {
+  animation: crt-content-fade-in 0.6s step-end forwards;
+}
+
+@keyframes crt-content-fade-in {
+  0%, 75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes crt-power-on-anim {
+  0% {
+    transform: scaleY(0.004) scaleX(0);
+    filter: brightness(5) contrast(2);
+    opacity: 0.7;
+    background: #ffffff;
+  }
+  45% {
+    transform: scaleY(0.004) scaleX(1);
+    filter: brightness(5) contrast(2);
+    opacity: 1;
+    background: #ffffff;
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-power-on {
+    animation: none !important;
+  }
+  .crt-home-led,
+  .screen-page-led,
+  .crt-home-controls span,
+  .screen-page-controls span {
+    animation: none !important;
+  }
+}
+
+/* Black LED Breathing Animation */
+@keyframes led-breathe {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 4px var(--color-primary-led-glow);
+  }
+}
+
+/* LED Fast Flickering Animation (Click Input Feed) */
+@keyframes led-fast-flicker {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* LED Slow Blinking Animation (Route Loading Feed) */
+@keyframes led-slow-blink {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    opacity: 0.25;
+    box-shadow: none;
+  }
+}
+

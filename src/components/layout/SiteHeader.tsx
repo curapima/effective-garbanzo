@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Monitor } from "lucide-react";
 
 const navItems = [
@@ -12,16 +9,10 @@ const navItems = [
 ];
 
 export function SiteHeader() {
-  const pathname = usePathname();
-
-  if (pathname === "/") {
-    return null;
-  }
-
   return (
-    <header className="sticky top-0 z-50 border-b border-kimi-border bg-kimi-black/88 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-pixel text-sm font-bold uppercase tracking-[0.22em]">
+    <header className="border-b border-kimi-border bg-kimi-panel/90 backdrop-blur">
+      <div className="flex items-center justify-between gap-4 px-4 py-3">
+        <Link href="/" className="flex items-center gap-2 font-pixel text-sm font-bold uppercase tracking-[0.22em] text-kimi-text">
           <span className="grid h-9 w-9 place-items-center border border-kimi-border bg-kimi-panel text-kimi-green">
             <Monitor size={18} aria-hidden="true" />
           </span>

@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { SiteFooter } from "@/components/layout/SiteFooter";
-import { SiteHeader } from "@/components/layout/SiteHeader";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,17 +16,22 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "light",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" style={{ colorScheme: "light" }}>
+      <head>
+        <meta name="darkreader-lock" />
+      </head>
       <body>
-        <SiteHeader />
         <main>{children}</main>
-        <SiteFooter />
       </body>
     </html>
   );

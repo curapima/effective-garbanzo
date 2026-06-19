@@ -5,3 +5,5 @@ coverage/
 .next/
 out/
 .env*
+tsconfig.tsbuildinfo
+.codex-next-dev*.log
