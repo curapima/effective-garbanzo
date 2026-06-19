@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Cpu, FolderKanban, Tags } from "lucide-react";
 import { PostGrid } from "@/components/post/PostGrid";
+import { CrtScene } from "@/components/three/CrtScene";
 import { getAllPosts, getCategories, getFeaturedPosts, getTags } from "@/lib/posts";
 
 export default function HomePage() {
@@ -37,22 +38,9 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="crt-scanline border border-kimi-border bg-kimi-panel p-4 shadow-glow">
-          <div className="aspect-[4/3] border border-kimi-border bg-black p-4">
-            <div className="flex h-full flex-col justify-between rounded-[2rem] border-[10px] border-[#1f1f1f] bg-[#08100b] p-6 shadow-inner">
-              <div className="text-xs uppercase tracking-[0.24em] text-kimi-green">BOOT CHANNEL 01</div>
-              <div>
-                <p className="text-3xl font-black text-kimi-text">CRT READING MODE</p>
-                <p className="mt-3 text-sm leading-6 text-kimi-muted">
-                  Three.js 显示屏将在下一阶段接入。当前屏幕先提供可读的终端占位界面。
-                </p>
-              </div>
-              <div className="grid grid-cols-3 gap-2 text-center text-xs text-kimi-muted">
-                <span className="border border-kimi-border p-2">{posts.length} POSTS</span>
-                <span className="border border-kimi-border p-2">{categories.length} CATS</span>
-                <span className="border border-kimi-border p-2">{tags.length} TAGS</span>
-              </div>
-            </div>
+        <div className="crt-scanline border border-kimi-border bg-kimi-panel p-2 shadow-glow">
+          <div className="aspect-[4/3] border border-kimi-border bg-black">
+            <CrtScene postsCount={posts.length} categoriesCount={categories.length} tagsCount={tags.length} />
           </div>
         </div>
       </section>
