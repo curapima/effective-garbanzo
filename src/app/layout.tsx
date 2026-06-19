@@ -2,17 +2,18 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tky-blog.vercel.app"),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "TKY Blog",
-    template: "%s | TKY Blog",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: "黑白灰像素终端风格的个人博客，记录技术、项目和长期思考。",
+  description: siteConfig.description,
   openGraph: {
-    title: "TKY Blog",
-    description: "黑白灰像素终端风格的个人博客。",
+    title: siteConfig.name,
+    description: siteConfig.description,
     type: "website",
   },
 };
