@@ -40,28 +40,28 @@
 ### 场景 1：Hero 启航 (Hero Start)
 中心为一个不断自转的 3D 像素月亮，周围环绕着循环轨道的英文字符。用户可通过点击下方的双箭头“继续探索”进入下个场景。
 
-![场景 1 Hero](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/homepage_screenshot.png)
+![场景 1 Hero](../public/images/career-page-analysis/scene-01-hero.png)
 
 ---
 
 ### 场景 2：导航与选择 (Navigation & Selection)
 左下方露出像素月球局部，背景为闪烁的星空。中心展示 8-bit 风格的复古控制面板，供用户选择 `校园招聘`、`了解 [月之暗面]` 和 `社会招聘`。
 
-![场景 2 导航与选择](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/page2_screenshot.png)
+![场景 2 导航与选择](../public/images/career-page-analysis/scene-02-navigation.png)
 
 ---
 
 ### 场景 3：核心价值观 ("Build Your Own Job")
 将传统的保守职场规则与月之暗面提倡的 AGI 精神进行对比。背景采用繁星快速向四周退去的“超空间跳跃 (Hyperdrive)”动画。
 
-![场景 3 价值观](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/page3_screenshot.png)
+![场景 3 价值观](../public/images/career-page-analysis/scene-03-values.png)
 
 ---
 
 ### 场景 4：AGI 征途 (The AGI Odyssey)
 展示探索誓言：*“The AGI Odyssey Since 2023. 也许有一天会发现 这趟旅途没有尽头 我希望它一直没有尽头 The beginning of infinity”*。左侧放置三个 CRT 复古监视器，显示绿色像素噪音。
 
-![场景 4 AGI征途](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/page4_screenshot.png)
+![场景 4 AGI征途](../public/images/career-page-analysis/scene-04-agi-odyssey.png)
 
 ---
 
@@ -73,7 +73,7 @@
 * 团队年轻有活力（最年轻员工 **17** 岁，平均年龄 **26** 岁）。
 * 在全球 **5** 个城市设立了办公室（北京、上海、深圳、新加坡、硅谷）。
 
-![场景 5 核心指标](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/page5_screenshot.png)
+![场景 5 核心指标](../public/images/career-page-analysis/scene-05-metrics.png)
 
 ---
 
@@ -84,14 +84,14 @@
 3. **交流** (握手图标)
 4. **登月** (地球与月球的轨道连接图标)
 
-![场景 6 申请流程](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/page6_screenshot.png)
+![场景 6 申请流程](../public/images/career-page-analysis/scene-06-application-process.png)
 
 ---
 
 ### 场景 7：页脚与行动呼吁 (Footer & CTA)
 提供醒目的“去登月”申请按钮、旗下产品（Kimi 智能助手、Kimi Code、Kimi 开放平台）链接以及人才通道入口。底部特别注明：*“Co-created with Kimi K2.6”*（由月之暗面新一代模型协作生成）。
 
-![场景 7 页脚](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/page7_screenshot.png)
+![场景 7 页脚](../public/images/career-page-analysis/scene-07-footer-cta.png)
 
 ---
 
@@ -102,10 +102,10 @@
 * 鼠标悬停在卡片上时，中心像素月球将动态更新该岗位的英文字母及介绍。
 
 ### 校园招聘门户
-![校园招聘门户](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/campus_screenshot.png)
+![校园招聘门户](../public/images/career-page-analysis/campus-portal.png)
 
 ### 社会招聘门户
-![社会招聘门户](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/social_screenshot.png)
+![社会招聘门户](../public/images/career-page-analysis/social-portal.png)
 
 ---
 
@@ -113,4 +113,6 @@
 
 如需动态查看网站的平滑滚动特效、CRT 屏幕白噪声、像素月亮自转及岗位卡片环绕交互，请播放以下浏览器操作录制视频：
 
-![浏览器交互视频录制](/C:/Users/14221/.gemini/antigravity/brain/3ad0e067-07a7-4409-8129-2f578507cc96/recording.webm)
+<video src="../public/images/career-page-analysis/browser-session-recording.webm" controls width="100%" title="浏览器交互视频录制"></video>
+
+[下载或打开浏览器交互视频录制](../public/images/career-page-analysis/browser-session-recording.webm)
